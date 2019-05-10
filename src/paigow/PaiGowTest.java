@@ -95,6 +95,11 @@ public class PaiGowTest {
         }
     }
     
+    /**
+     * @Description:    初始化4个玩家
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午7:49:05
+     */
     public void initPlayers() {
         players = new ArrayList<Player>();
         Scanner scanner = new Scanner(System.in);
@@ -102,7 +107,6 @@ public class PaiGowTest {
             System.out.println("请输入玩家" + i + "的姓名：");
             players.add(new Player(scanner.next()));
         }
-        scanner.close();
         System.out.println("4位玩家加入成功，列举如下：");
         for (Player player : players) {
             System.out.println(player.toString());
@@ -134,6 +138,11 @@ public class PaiGowTest {
         System.out.println("-------------全部玩家发牌完成！---------------");
     }
     
+    /**
+     * @Description:    输出所有已经出现过的牌
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午7:49:29
+     */
     public void printUsedCards() {
         System.out.println("-------------已出牌如下--------------");
         for (PaiGow paiGow : paiGowsUsed) {
@@ -141,6 +150,11 @@ public class PaiGowTest {
         }
     }
     
+    /**
+     * @Description:    输出所有玩家的手牌
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午7:49:51
+     */
     public void showPlayersPaiGows() {
         for (Player player : players) {
             player.showPaiGows();
@@ -154,12 +168,42 @@ public class PaiGowTest {
      */
     public static void main(String[] args) {
         PaiGowTest paiGowTest = new PaiGowTest();
+        // 初始化牌集
         paiGowTest.initPaiGows();
+        // 输出初始化牌集的信息
         paiGowTest.printPaiGows();
+        // 初始化四位玩家
         paiGowTest.initPlayers();
-        paiGowTest.randomCards();
-        paiGowTest.showPlayersPaiGows();
-        paiGowTest.printUsedCards();
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("输入1开始发牌，输入其他结束游戏");
+            int go = scanner.nextInt();
+            if (1 == go) {
+                // 开始为四位玩家随机发牌
+                paiGowTest.randomCards();
+                // 展示所有玩家的手牌
+                paiGowTest.showPlayersPaiGows();
+                // 输出已经出现的所有牌
+                paiGowTest.printUsedCards();
+            } else {
+                System.out.println("游戏结束，谢谢！");
+                break;
+            }
+            if (paiGowTest.paiGowsUsed.size() >= 32) {
+                System.out.println("所有牌已发完，请输入选择：");
+                System.out.println("输入1，自动洗牌，继续下一局");
+                System.out.println("输入其他信息，结束游戏");
+                go = scanner.nextInt();
+                if (1 == go) {
+                    paiGowTest.paiGowsUsed.clear();
+                    System.out.println("自动洗牌完成，继续下一局");
+                } else {
+                    System.out.println("游戏结束，谢谢！");
+                    break;
+                }
+            }
+        }
+        scanner.close();
     }
 
 }
