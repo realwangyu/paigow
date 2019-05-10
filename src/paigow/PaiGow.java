@@ -27,6 +27,22 @@ public class PaiGow implements Comparable<PaiGow>{
     private String name;
     // 牌的大小顺序
     private Integer order;
+    // 牌的唯一标识
+    private int id;
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * @param count

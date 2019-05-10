@@ -30,6 +30,30 @@ public class Player {
     private PaiGow paiGow1;
     private PaiGow paiGow2;
     /**
+     * @return the paiGow1
+     */
+    public PaiGow getPaiGow1() {
+        return paiGow1;
+    }
+    /**
+     * @param paiGow1 the paiGow1 to set
+     */
+    public void setPaiGow1(PaiGow paiGow1) {
+        this.paiGow1 = paiGow1;
+    }
+    /**
+     * @return the paiGow2
+     */
+    public PaiGow getPaiGow2() {
+        return paiGow2;
+    }
+    /**
+     * @param paiGow2 the paiGow2 to set
+     */
+    public void setPaiGow2(PaiGow paiGow2) {
+        this.paiGow2 = paiGow2;
+    }
+    /**
      * @param name
      */
     public Player(String name) {
@@ -66,5 +90,11 @@ public class Player {
     @Override
     public String toString() {
         return "玩家 [姓名：" + name + ", 是否庄家=" + isBanker + "]";
+    }
+    
+    public void showPaiGows() {
+        System.out.println("玩家：" + this.getName() + "的两张手牌分别是："
+                + this.getPaiGow1().toString()
+                + this.getPaiGow2().toString());
     }
 }

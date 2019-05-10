@@ -19,6 +19,7 @@ package paigow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,8 @@ public class PaiGowTest {
     
     public List<Player> players;
     
+    public List<PaiGow> paiGowsUsed;
+    
     /**
      * @Description:    初始化32张牌
      * @Author:         wangyu08334
@@ -39,6 +42,7 @@ public class PaiGowTest {
      */
     public void initPaiGows() {
         paiGows = new ArrayList<PaiGow>();
+        paiGowsUsed = new ArrayList<PaiGow>();;
         // 初始化32张牌
         paiGows.add(new PaiGow(12, "天", 1));
         paiGows.add(new PaiGow(12, "天", 1));
@@ -98,6 +102,7 @@ public class PaiGowTest {
             System.out.println("请输入玩家" + i + "的姓名：");
             players.add(new Player(scanner.next()));
         }
+        scanner.close();
         System.out.println("4位玩家加入成功，列举如下：");
         for (Player player : players) {
             System.out.println(player.toString());
@@ -108,12 +113,42 @@ public class PaiGowTest {
      * @Author:         wangyu08334
      * @Date:           2019年5月10日 下午5:43:57
      */
-    public void randomCards(List<PaiGow> paiGows, List<Player> players) {
-        Math.random();
+    public void randomCards() {
+        System.out.println("-------------开始随机发牌---------------");
+        Random random = new Random();
+        int index = -1;
+        // 为每一位玩家各发两张牌
+        for (Player player : players) {
+            // 保证取到的随机数不能重复
+            do {
+                index = random.nextInt(32);
+            } while (paiGowsUsed.contains(paiGows.get(index)));
+            player.setPaiGow1(paiGows.get(index));
+            paiGowsUsed.add(paiGows.get(index));
+            do {
+                index = random.nextInt(32);
+            } while (paiGowsUsed.contains(paiGows.get(index)));
+            player.setPaiGow2(paiGows.get(index));
+            paiGowsUsed.add(paiGows.get(index));
+        }
+        System.out.println("-------------全部玩家发牌完成！---------------");
+    }
+    
+    public void printUsedCards() {
+        System.out.println("-------------已出牌如下--------------");
+        for (PaiGow paiGow : paiGowsUsed) {
+            System.out.println(paiGow.toString());
+        }
+    }
+    
+    public void showPlayersPaiGows() {
+        for (Player player : players) {
+            player.showPaiGows();
+        }
     }
 
     /**
-     * @Description:    note
+     * @Description:    牌九游戏测试程序
      * @Author:         wangyu08334
      * @Date:           2019年5月10日 下午4:23:29
      */
@@ -122,8 +157,9 @@ public class PaiGowTest {
         paiGowTest.initPaiGows();
         paiGowTest.printPaiGows();
         paiGowTest.initPlayers();
-        
-        
+        paiGowTest.randomCards();
+        paiGowTest.showPlayersPaiGows();
+        paiGowTest.printUsedCards();
     }
 
 }
