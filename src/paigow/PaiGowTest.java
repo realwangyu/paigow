@@ -19,9 +19,10 @@ package paigow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
- * @Description:    note
+ * @Description:    牌九游戏测试类
  * @Author:         wangyu08334
  * @Date:           2019年5月10日 下午4:23:29
  */
@@ -29,6 +30,13 @@ public class PaiGowTest {
     
     public List<PaiGow> paiGows;
     
+    public List<Player> players;
+    
+    /**
+     * @Description:    初始化32张牌
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午5:12:59
+     */
     public void initPaiGows() {
         paiGows = new ArrayList<PaiGow>();
         // 初始化32张牌
@@ -66,8 +74,42 @@ public class PaiGowTest {
         paiGows.add(new PaiGow(6, "大猴", 7));
     }
     
+    /**
+     * @Description:    输出所有牌
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午5:13:19
+     */
     public void printPaiGows() {
-        
+        if (paiGows == null
+                && paiGows.size() <= 0) {
+            System.out.println("没有初始化牌集！");
+            return;
+        }
+        System.out.println("--------------------牌集如下--------------------");
+        for (PaiGow paiGow : paiGows) {
+            System.out.println(paiGow.toString());
+        }
+    }
+    
+    public void initPlayers() {
+        players = new ArrayList<Player>();
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 1; i < 5; i++) {
+            System.out.println("请输入玩家" + i + "的姓名：");
+            players.add(new Player(scanner.next()));
+        }
+        System.out.println("4位玩家加入成功，列举如下：");
+        for (Player player : players) {
+            System.out.println(player.toString());
+        }
+    }
+    /**
+     * @Description:    随机给玩家发牌
+     * @Author:         wangyu08334
+     * @Date:           2019年5月10日 下午5:43:57
+     */
+    public void randomCards(List<PaiGow> paiGows, List<Player> players) {
+        Math.random();
     }
 
     /**
@@ -76,9 +118,11 @@ public class PaiGowTest {
      * @Date:           2019年5月10日 下午4:23:29
      */
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         PaiGowTest paiGowTest = new PaiGowTest();
         paiGowTest.initPaiGows();
+        paiGowTest.printPaiGows();
+        paiGowTest.initPlayers();
+        
         
     }
 
