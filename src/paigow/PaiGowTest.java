@@ -44,38 +44,39 @@ public class PaiGowTest {
         paiGows = new ArrayList<PaiGow>();
         paiGowsUsed = new ArrayList<PaiGow>();;
         // 初始化32张牌
-        paiGows.add(new PaiGow(12, "天", 1));
-        paiGows.add(new PaiGow(12, "天", 1));
-        paiGows.add(new PaiGow(2, "地", 2));
-        paiGows.add(new PaiGow(2, "地", 2));
-        paiGows.add(new PaiGow(8, "人", 3));
-        paiGows.add(new PaiGow(8, "人", 3));
+        paiGows.add(new PaiGow(12, "天", 7));
+        paiGows.add(new PaiGow(12, "天", 7));
+        paiGows.add(new PaiGow(2, "地", 6));
+        paiGows.add(new PaiGow(2, "地", 6));
+        paiGows.add(new PaiGow(8, "人", 5));
+        paiGows.add(new PaiGow(8, "人", 5));
         paiGows.add(new PaiGow(4, "和", 4));
         paiGows.add(new PaiGow(4, "和", 4));
-        paiGows.add(new PaiGow(10, "梅花", 5));
-        paiGows.add(new PaiGow(10, "梅花", 5));
-        paiGows.add(new PaiGow(6, "长三", 5));
-        paiGows.add(new PaiGow(6, "长三", 5));
-        paiGows.add(new PaiGow(4, "板凳", 5));
-        paiGows.add(new PaiGow(4, "板凳", 5));
-        paiGows.add(new PaiGow(11, "虎头", 6));
-        paiGows.add(new PaiGow(11, "虎头", 6));
-        paiGows.add(new PaiGow(10, "红头十", 6));
-        paiGows.add(new PaiGow(10, "红头十", 6));
-        paiGows.add(new PaiGow(6, "幺六", 6));
-        paiGows.add(new PaiGow(6, "幺六", 6));
-        paiGows.add(new PaiGow(7, "幺七", 6));
-        paiGows.add(new PaiGow(7, "幺七", 6));
-        paiGows.add(new PaiGow(9, "杂九", 7));
-        paiGows.add(new PaiGow(9, "杂九", 7));
-        paiGows.add(new PaiGow(8, "杂八", 7));
-        paiGows.add(new PaiGow(8, "杂八", 7));
-        paiGows.add(new PaiGow(7, "杂七", 7));
-        paiGows.add(new PaiGow(7, "杂七", 7));
-        paiGows.add(new PaiGow(5, "杂五", 7));
-        paiGows.add(new PaiGow(5, "杂五", 7));
-        paiGows.add(new PaiGow(3, "小猴", 7));
-        paiGows.add(new PaiGow(6, "大猴", 7));
+        paiGows.add(new PaiGow(10, "梅花", 3));
+        paiGows.add(new PaiGow(10, "梅花", 3));
+        paiGows.add(new PaiGow(6, "长三", 3));
+        paiGows.add(new PaiGow(6, "长三", 3));
+        paiGows.add(new PaiGow(4, "板凳", 3));
+        paiGows.add(new PaiGow(4, "板凳", 3));
+        paiGows.add(new PaiGow(11, "虎头", 2));
+        paiGows.add(new PaiGow(11, "虎头", 2));
+        paiGows.add(new PaiGow(10, "红十", 2));
+        paiGows.add(new PaiGow(10, "红十", 2));
+        paiGows.add(new PaiGow(6, "幺六", 2));
+        paiGows.add(new PaiGow(6, "幺六", 2));
+        paiGows.add(new PaiGow(7, "幺七", 2));
+        paiGows.add(new PaiGow(7, "幺七", 2));
+        paiGows.add(new PaiGow(9, "杂九", 1));
+        paiGows.add(new PaiGow(9, "杂九", 1));
+        paiGows.add(new PaiGow(8, "杂八", 1));
+        paiGows.add(new PaiGow(8, "杂八", 1));
+        paiGows.add(new PaiGow(7, "杂七", 1));
+        paiGows.add(new PaiGow(7, "杂七", 1));
+        paiGows.add(new PaiGow(5, "杂五", 1));
+        paiGows.add(new PaiGow(5, "杂五", 1));
+        paiGows.add(new PaiGow(3, "小猴", 1));
+        paiGows.add(new PaiGow(6, "大猴", 1));
+        System.out.println("初始化牌集完成！请开始游戏……");
     }
     
     /**
@@ -171,7 +172,7 @@ public class PaiGowTest {
         // 初始化牌集
         paiGowTest.initPaiGows();
         // 输出初始化牌集的信息
-        paiGowTest.printPaiGows();
+        // paiGowTest.printPaiGows();
         // 初始化四位玩家
         paiGowTest.initPlayers();
         Scanner scanner = new Scanner(System.in);
